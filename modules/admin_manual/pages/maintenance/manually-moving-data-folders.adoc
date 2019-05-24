@@ -19,7 +19,7 @@ This example assumes that:
 1.  Stop Apache
 2.  Use rsync to sync the files from the current folder to the new one
 3.  Create a symbolic link from the new directory to the old one
-4.  Double-check xref:installation/installation_wizard.adoc#strong-perms-label[the directory permissions] on the new directory
+4.  Double-check xref:installation/installation_wizard.adoc#post-installation-steps[the directory permissions] on the new directory
 5.  Restart Apache
 
 To save time, here’s the commands which you can copy and use:
@@ -119,7 +119,7 @@ being set to var/www/owncloud/data. So you would have to change the
 value by using the config:app:set option. Here’s an example of how you
 would update the setting:
 
-[source,console]
+[source,console,subs="attributes"]
 ----
-sudo -u www-data php occ config:app:set --value /mnt/owncloud fictitious datadir
+{occ-command-example-prefix} config:app:set --value /mnt/owncloud fictitious datadir
 ----

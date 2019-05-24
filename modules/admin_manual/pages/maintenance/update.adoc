@@ -52,30 +52,29 @@ should always have your own current backups (See xref:maintenance/backup.adoc[Ba
 3.  Verify that the HTTP user on your system can write to your whole
 ownCloud directory; see the xref:setting-permissions-for-updating[Setting Permissions for Updating] section
 below.
-4.  Navigate to your Admin page and click the *Update Center* button
+4.  Navigate to your Admin page and click the btn:[Update Center] button
 under Updater. This takes you to the Updater control panel.
-5.  Click Update, and carefully read the messages. If there are any
+5.  Click btn:[Update], and carefully read the messages. If there are any
 problems it will tell you. The most common issue is directory
 permissions; your HTTP user needs write permissions to your whole
 ownCloud directory. (See xref:installation/manual_installation.adoc#set-strong-directory-permissions[Set Strong Directory Permissions].) Another common issue is
 SELinux rules (see xref:installation/selinux_configuration.adoc[SELinux Configuration].) Otherwise you will see
 messages about checking your installation and making backups.
-6.  Click Proceed, and then it performs the remaining steps, which takes
-a few minutes.
+6.  Click Proceed, and then it performs the remaining steps, which takes a few minutes.
 7.  If your directory permissions are correct, a backup was made, and
 downloading the new ownCloud archive succeeded you will see the
-following screen. Click the Start Update button to complete your update:
+following screen. Click the btn:[Start Update] button to complete your update:
 
 image:maintenance/upgrade-2.png[image]
 
 NOTE: If you have a large ownCloud installation and have shell access, you should use the `occ upgrade` command, 
-running it as your HTTP user, instead of clicking the Start Update button, in order to avoid PHP timeouts.
+running it as your HTTP user, instead of clicking the btn:[Start Update] button, in order to avoid PHP timeouts.
 
 This example is for Ubuntu Linux:
 
-[source,console]
+[source,console,subs="attributes"]
 ----
-sudo -u www-data php occ upgrade
+{occ-command-example-prefix} upgrade
 ----
 
 The optional parameter to skip migration tests during this step was
@@ -138,30 +137,30 @@ create checkpoints and to roll back to older checkpoints. You must run
 it as your HTTP user. This example on Ubuntu Linux displays command
 options:
 
-[source,console]
+[source,console,subs="attributes"]
 ----
-sudo -u www-data php updater/application.php list
+{occ-command-example-prefix} updater/application.php list
 ----
 
 See usage for commands, like this example for the `upgrade:checkpoint` command:
 
-[source,console]
+[source,console,subs="attributes"]
 ----
-sudo -u www-data php updater/application.php upgrade:checkpoint -h
+{occ-command-example-prefix} updater/application.php upgrade:checkpoint -h
 ----
 
 You can display a help summary:
 
-[source,console]
+[source,console,subs="attributes"]
 ----
-sudo -u www-data php updater/application.php --help
+{occ-command-example-prefix} updater/application.php --help
 ----
 
 When you run it without options it runs a system check:
 
-[source,console]
+[source,console,subs="attributes"]
 ----
-sudo -u www-data php owncloud/updater/application.php
+{occ-command-example-prefix} owncloud/updater/application.php
 ownCloud updater 1.0 - CLI based ownCloud server upgrades
 Checking system health.
 - file permissions are ok.
@@ -172,32 +171,33 @@ Done
 
 Create a checkpoint:
 
-[source,console]
+[source,console,subs="attributes"]
 ----
-sudo -u www-data php updater/application.php upgrade:checkpoint --create
+{occ-command-example-prefix} updater/application.php upgrade:checkpoint --create
 Created checkpoint 9.0.0.12-56d5e4e004964
 ----
 
 List checkpoints:
 
-[source,console]
+[source,console,subs="attributes"]
 ----
-sudo -u www-data php updater/application.php upgrade:checkpoint --list
+{occ-command-example-prefix} updater/application.php upgrade:checkpoint --list
 [source,console]
 ----
 
 Restore an earlier checkpoint:
 
-[source,console]
+[source,console,subs="attributes"]
 ----
-sudo -u www-data php updater/application.php upgrade:checkpoint
+{occ-command-example-prefix} updater/application.php upgrade:checkpoint
  --restore=9.0.0.12-56d5e4e004964
 ----
 
 Add a line like this to your crontab to automatically create daily checkpoints:
 
+[source,console,subs="attributes"]
 ....
-2 15 * * * sudo -u www-data php /path/to/owncloud/updater/application.php
+2 15 * * * {occ-command-example-prefix} /path/to/owncloud/updater/application.php
 upgrade:checkpoint --create > /dev/null 2>&1
 ....
 

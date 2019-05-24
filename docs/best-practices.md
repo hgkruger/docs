@@ -240,6 +240,26 @@ include::example$installation/post-installation-steps.sh[]
 ----
 ```
 
+### OCC Examples
+
+When creating examples that show how to use occ, ensure that you use the `occ-command-example-prefix` attribute.
+Doing so will keep all examples of its use consistent throughout the documentation.
+
+**Note:** when used within a source code block, as in the following example, `subs="attributes"` has to be set, otherwise it won't render properly:
+
+```asciidoc
+[source,console,subs="attributes"]
+....
+{occ-command-example-prefix} -h
+....
+```
+
+This will print out the following when rendered in the docs:
+
+```html
+sudo -u www-data php occ -h
+```
+
 ## Literal Text and Blocks
 
 Reference: [`Literal Text and Blocks`](https://asciidoctor.org/docs/user-manual/#literal-text-and-blocks)
@@ -346,8 +366,6 @@ Please see the reference link for more details.
 
 Reference: [`Keyboard Shortcuts`](https://asciidoctor.org/docs/user-manual/#keyboard-shortcuts)
 Reference: [`UI buttonss`](https://asciidoctor.org/docs/user-manual/#ui-buttons)
-
-**IMPORTANT** You must set the `:experimental:` attribute to enable the UI macros.
 
 You can create a button styled text like you want a user to press specific keyboard button(s) or browser text buttons.
 The syntax for keyboard shortcuts is: `kbd:[key(+key)*]`
